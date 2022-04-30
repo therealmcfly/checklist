@@ -1,6 +1,6 @@
-function Input({children, id, type, value, onChange}) {
+function Input({children, id, type, value, onChange, onKeyDown}) {
     return ( 
-        <input id={id} type={type} value={value} onChange={onChange}></input>
+        <input id={id} type={type} value={value} onChange={onChange} onKeyDown={onKeyDown}></input>
     )
 }
 
