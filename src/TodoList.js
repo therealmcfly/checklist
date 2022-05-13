@@ -17,8 +17,8 @@ function TodoList() {
 
   function addItemToList() {
     if (inputValue) {
-      const newItem = { key: list.length + 1, content: inputValue };
-      setList([...list, newItem]);
+      const newItem = { id: list.length + 1, content: inputValue };
+      setList((currentList) => [...currentList, newItem]);
       setInputValue("");
     }
   }
@@ -29,11 +29,16 @@ function TodoList() {
     }
   }
 
+  function deleteItem(id) {
+    const updatedList = list.filter((item) => item.id !== id);
+    setList(updatedList);
+  }
+
   return (
     <div id="listContainer">
       <h3>Things to Do...</h3>
       <ul id="todoList">
-        <ListOfItems list={list} />
+        <ListOfItems list={list} onDelete={deleteItem} />
       </ul>
       <div id="buttonContainer">
         <Input
